@@ -82,16 +82,21 @@
   }
   .card.featured {
     background: rgba(10, 180, 196, 0.07);
-    border-color: rgba(10, 180, 196, 0.28);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+    border-color: rgba(10, 180, 196, 0.35);
+    box-shadow:
+      0 0 0 1px rgba(10, 180, 196, 0.2),
+      0 16px 48px rgba(0, 0, 0, 0.28),
+      0 0 40px rgba(10, 180, 196, 0.08);
   }
   .card.featured::after {
     background: linear-gradient(90deg, var(--teal), var(--accent));
   }
   .card.featured:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+    transform: translateY(-6px);
+    box-shadow:
+      0 0 0 1px rgba(10, 180, 196, 0.3),
+      0 28px 64px rgba(0, 0, 0, 0.35),
+      0 0 50px rgba(10, 180, 196, 0.12);
   }
 
   .badge {
@@ -142,7 +147,7 @@
   }
   .price-amount {
     font-family: "Poppins", system-ui, sans-serif;
-    font-size: 1.5rem;
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
     font-weight: 700;
     color: var(--teal);
     letter-spacing: -0.5px;

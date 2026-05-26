@@ -452,10 +452,18 @@
     h1 { letter-spacing: -1px; }
     .scroll-hint { display: none; }
 
-    /* Mockup on mobile: simpler */
-    .browser {
-      transform: none;
+    /* Equal-width mirror buttons */
+    .actions {
+      flex-direction: column;
     }
+    .actions :global(.btn) {
+      width: 100%;
+      justify-content: center;
+      padding: 1rem 1.5rem;
+    }
+
+    /* Mockup on mobile: simpler */
+    .browser { transform: none; }
     .browser-body { height: 240px; }
     .float-badge-1 { left: 0; bottom: -1.25rem; }
     .float-badge-2 { right: 0; top: 0.5rem; }

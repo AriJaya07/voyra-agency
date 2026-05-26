@@ -18,7 +18,7 @@
       <div class="section-divider"></div>
       <h2 class="title">Ready to Go<br />Digital?</h2>
       <p class="desc">
-        Reach out directly — our team responds within 1 business hour and will
+        Reach out directly — our team will review your inquiry and
         guide you to the right package for your travel business.
       </p>
 
@@ -30,7 +30,7 @@
 
       <div class="response-time">
         <span class="pulse" aria-hidden="true"></span>
-        Typically responds within 1 hour during business hours
+        Typically responds during business hours
       </div>
     </div>
 
@@ -39,7 +39,7 @@
         <div class="success" role="status" aria-live="polite">
           <div class="success-circle" aria-hidden="true">✦</div>
           <h3>Message Sent!</h3>
-          <p>We'll get back to you within 1 business hour. Talk soon!</p>
+          <p>We'll review your message and get back to you soon. Talk soon!</p>
           <button class="reset-btn" onclick={() => (submitted = false)}>
             Send another message
           </button>
@@ -126,7 +126,7 @@
     display: grid;
     grid-template-columns: 1fr 1.1fr;
     gap: 5rem;
-    align-items: start;
+    align-items: stretch;
   }
 
   .title {
@@ -177,14 +177,23 @@
     50% { transform: scale(1.5); opacity: 0; }
   }
 
+  .right {
+    display: flex;
+    flex-direction: column;
+  }
+
   /* Form card */
   .form-card {
+    flex: 1;
     background: #fff;
     border: 1.5px solid rgba(10, 180, 196, 0.1);
     border-radius: var(--radius-card);
     padding: 2rem;
     box-shadow: 0 4px 32px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
   }
+
   .form-title {
     font-family: "Playfair Display", serif;
     font-size: 1.25rem;
@@ -194,7 +203,7 @@
     letter-spacing: -0.3px;
   }
 
-  form { display: flex; flex-direction: column; gap: 1rem; }
+  form { display: flex; flex-direction: column; gap: 1rem; flex: 1; }
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .group { display: flex; flex-direction: column; gap: 0.4rem; }
   label {
@@ -249,11 +258,13 @@
 
   /* Success */
   .success {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 3rem 2rem;
     gap: 1rem;
     background: #fff;
     border: 1.5px solid rgba(10, 180, 196, 0.15);

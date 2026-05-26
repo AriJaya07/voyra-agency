@@ -25,6 +25,7 @@
   }}
 />
 
+<!-- Header bar — no mobile-menu inside so backdrop-filter doesn't trap fixed children -->
 <header class="nav" class:scrolled aria-label="Site header">
   <div class="inner">
     <a href="/" class="logo-link" onclick={closeMenu} aria-label="Voyra Agency home">
@@ -53,23 +54,31 @@
       <span class="bar" class:open={menuOpen}></span>
     </button>
   </div>
-
-  <nav
-    id="mobile-menu"
-    class="mobile-menu"
-    class:open={menuOpen}
-    aria-label="Mobile navigation"
-    aria-hidden={!menuOpen}
-  >
-    <a href="/" onclick={closeMenu} class="mobile-logo-link">
-      <img src={logo} alt="Voyra Agency" class="mobile-logo-img" />
-    </a>
-    <a href="#packages" class="mobile-link" onclick={closeMenu}>Packages</a>
-    <a href="#why" class="mobile-link" onclick={closeMenu}>Why Voyra</a>
-    <a href="#contact" class="mobile-link" onclick={closeMenu}>Contact</a>
-    <a href="#contact" class="mobile-cta" onclick={closeMenu}>Get Started →</a>
-  </nav>
 </header>
+
+<!-- Mobile overlay — sibling to header, NOT a child, so position:fixed is always viewport-relative -->
+<nav
+  id="mobile-menu"
+  class="mobile-menu"
+  class:open={menuOpen}
+  aria-label="Mobile navigation"
+  aria-hidden={!menuOpen}
+>
+  <button class="mobile-close" onclick={closeMenu} aria-label="Close menu">
+    <span class="close-bar"></span>
+    <span class="close-bar"></span>
+  </button>
+
+  <a href="/" onclick={closeMenu} class="mobile-logo-link">
+    <img src={logo} alt="Voyra Agency" class="mobile-logo-img" />
+  </a>
+
+  <a href="#packages" class="mobile-link" onclick={closeMenu}>Packages</a>
+  <a href="#why" class="mobile-link" onclick={closeMenu}>Why Voyra</a>
+  <a href="#contact" class="mobile-link" onclick={closeMenu}>Contact</a>
+
+  <a href="#contact" class="mobile-cta" onclick={closeMenu}>Get Started →</a>
+</nav>
 
 <style>
   .nav {
@@ -104,15 +113,12 @@
     text-decoration: none;
   }
   .logo-img {
-    height: 48px;
-    width: 48px;
+    height: 48px; width: 48px;
     border-radius: 50%;
     object-fit: cover;
     transition: transform var(--transition);
   }
-  .logo-img:hover {
-    transform: scale(1.05);
-  }
+  .logo-img:hover { transform: scale(1.05); }
 
   .links {
     display: flex;
@@ -170,7 +176,6 @@
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 110;
     flex-shrink: 0;
   }
   .bar {
@@ -185,11 +190,12 @@
   .bar:nth-child(2).open { opacity: 0; transform: scaleX(0); }
   .bar:nth-child(3).open { transform: rotate(-45deg) translate(5px, -5px); }
 
-  /* Mobile menu */
+  /* ── MOBILE OVERLAY ── */
+  /* Sibling to <header>, never a child — avoids backdrop-filter containing-block trap */
   .mobile-menu {
     position: fixed;
     inset: 0;
-    z-index: 99;
+    z-index: 300;
     background: var(--surface-dark);
     display: flex;
     flex-direction: column;
@@ -199,29 +205,62 @@
     transform: translateX(100%);
     transition: transform 0.38s cubic-bezier(0.76, 0, 0.24, 1);
     padding: 2rem;
+    pointer-events: none;
+    visibility: hidden;
   }
-  .mobile-menu.open { transform: translateX(0); }
+  .mobile-menu.open {
+    transform: translateX(0);
+    pointer-events: all;
+    visibility: visible;
+  }
+
+  /* X close button */
+  .mobile-close {
+    position: absolute;
+    top: 1.25rem; right: 5%;
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+  .close-bar {
+    display: block;
+    width: 16px; height: 1.5px;
+    background: var(--cream);
+    border-radius: 2px;
+    position: absolute;
+  }
+  .close-bar:nth-child(1) { transform: rotate(45deg); }
+  .close-bar:nth-child(2) { transform: rotate(-45deg); }
 
   .mobile-logo-link {
     display: block;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     text-decoration: none;
   }
   .mobile-logo-img {
-    height: 72px;
-    width: 72px;
+    height: 72px; width: 72px;
     border-radius: 50%;
     object-fit: cover;
   }
 
   .mobile-link {
-    color: rgba(245, 240, 232, 0.75);
+    color: rgba(245, 240, 232, 0.72);
     text-decoration: none;
     font-size: 1.7rem;
     font-weight: 300;
     padding: 0.75rem 0;
     transition: color var(--transition);
     letter-spacing: -0.5px;
+    text-align: center;
+    width: 100%;
   }
   .mobile-link:hover { color: #fff; }
 
@@ -235,6 +274,9 @@
     font-weight: 500;
     text-decoration: none;
     transition: background var(--transition);
+    text-align: center;
+    width: 100%;
+    max-width: 280px;
   }
   .mobile-cta:hover { background: var(--teal-dark); }
 
