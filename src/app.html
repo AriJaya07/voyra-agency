@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#1A1208" />
+		<meta name="color-scheme" content="dark" />
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<a href="#main-content" class="skip-link">Skip to content</a>
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
+
+<style>
+	.skip-link {
+		position: absolute;
+		top: -100%;
+		left: 1rem;
+		background: #D4874A;
+		color: #1A1208;
+		padding: 0.5rem 1rem;
+		border-radius: 0 0 8px 8px;
+		font-family: sans-serif;
+		font-size: 0.875rem;
+		font-weight: 500;
+		text-decoration: none;
+		z-index: 9999;
+		transition: top 0.2s;
+	}
+	.skip-link:focus {
+		top: 0;
+	}
+</style>
