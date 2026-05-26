@@ -6,8 +6,8 @@ export const PACKAGES: Package[] = [
     tier: "Starter",
     name: "Basic",
     featured: false,
-    price: "Rp 3.500.000",
-    priceUSD: "~$215",
+    price: "Rp 500.000",
+    priceUSD: "~$28",
     priceNote: "per bulan",
     features: [
       "Social media management (Instagram, Facebook, TikTok)",
@@ -24,8 +24,8 @@ export const PACKAGES: Package[] = [
     tier: "Growth",
     name: "Intermediate",
     featured: true,
-    price: "Rp 6.500.000",
-    priceUSD: "~$400",
+    price: "Rp 1.500.000",
+    priceUSD: "~$85",
     priceNote: "per bulan",
     features: [
       "Everything in Basic",
@@ -44,8 +44,8 @@ export const PACKAGES: Package[] = [
     tier: "Full Power",
     name: "Advance",
     featured: false,
-    price: "Rp 12.000.000",
-    priceUSD: "~$735",
+    price: "Rp 3.000.000",
+    priceUSD: "~$170",
     priceNote: "per bulan",
     features: [
       "Everything in Intermediate",
