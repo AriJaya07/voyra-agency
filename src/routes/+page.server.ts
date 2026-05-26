@@ -1,3 +1,5 @@
+import { site, wa } from "$lib/config";
+import { adminEmail, isSmtpConfigured, smtp } from "$lib/config/server";
 import { fail } from "@sveltejs/kit";
 import type { Actions } from "./$types";
 
@@ -34,7 +36,7 @@ function adminEmailHtml(
       <!-- Body -->
       <tr>
         <td style="padding:32px;">
-          <p style="margin:0 0 24px;color:#6B5B45;font-size:14px;line-height:1.6;">A potential client just submitted a contact form on <strong style="color:#0AB4C4;">voyra.id</strong>. Details below:</p>
+          <p style="margin:0 0 24px;color:#6B5B45;font-size:14px;line-height:1.6;">A potential client just submitted a contact form on <strong style="color:#0AB4C4;">${site.url.replace(/^https?:\/\//, "")}</strong>. Details below:</p>
 
           <!-- Info table -->
           <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #E8DFC8;border-radius:10px;overflow:hidden;margin-bottom:24px;">
@@ -70,7 +72,7 @@ function adminEmailHtml(
 
           <!-- CTA -->
           <div style="text-align:center;margin:8px 0 24px;">
-            <a href="https://wa.me/6285792132517?text=Halo%20Voyra%20Agency!%20%F0%9F%91%8B%0A%0ASaya%20menemukan%20website%20Voyra%20dan%20tertarik%20dengan%20layanan%20*digital%20marketing*%20untuk%20bisnis%20travel%20saya.%0A%0ABisa%20bantu%20saya%20memilih%20paket%20yang%20tepat%3F%20%F0%9F%99%8F" style="display:inline-block;background:#25D366;border:2px solid #25D366;color:#ffffff;font-weight:700;font-size:14px;padding:13px 32px;border-radius:50px;text-decoration:none;letter-spacing:0.3px;mso-padding-alt:0;"><span style="color:#ffffff !important;-webkit-text-fill-color:#ffffff;mso-color-alt:#ffffff;">Reply via WhatsApp ↗</span></a>
+            <a href="${wa.href}" style="display:inline-block;background:#25D366;border:2px solid #25D366;color:#ffffff;font-weight:700;font-size:14px;padding:13px 32px;border-radius:50px;text-decoration:none;letter-spacing:0.3px;mso-padding-alt:0;"><span style="color:#ffffff !important;-webkit-text-fill-color:#ffffff;mso-color-alt:#ffffff;">Reply via WhatsApp ↗</span></a>
           </div>
 
         </td>
@@ -79,7 +81,7 @@ function adminEmailHtml(
       <!-- Footer -->
       <tr>
         <td style="background:#F5F0E8;padding:16px 32px;text-align:center;border-top:1px solid #E8DFC8;">
-          <p style="margin:0;font-size:12px;color:#C4A882;">Voyra Agency · voyra.id · support@balitravelnow.com</p>
+          <p style="margin:0;font-size:12px;color:#C4A882;">${site.name} · ${site.url.replace(/^https?:\/\//, "")} · ${site.email}</p>
         </td>
       </tr>
 
@@ -113,7 +115,7 @@ function userConfirmationHtml(name: string, business: string, pkg: string) {
       <!-- Greeting -->
       <tr>
         <td style="padding:36px 32px 0;">
-          <p style="margin:0 0 12px;color:#1A1208;font-size:16px;font-weight:600;">Hi ${name}! 👋</p>
+          <p style="margin:0 0 12px;color:#1A1208;font-size:16px;font-weight:600;">Hi ${name}!</p>
           <p style="margin:0;color:#6B5B45;font-size:14px;line-height:1.75;">
             Thank you for reaching out to Voyra Agency. We've received your inquiry for <strong style="color:#1A1208;">${business}</strong> and our team is already reviewing it.
           </p>
@@ -178,7 +180,7 @@ function userConfirmationHtml(name: string, business: string, pkg: string) {
           <div style="background:#F5F0E8;border-radius:12px;padding:20px 24px;text-align:center;">
             <p style="margin:0 0 6px;font-size:14px;font-weight:600;color:#1A1208;">Need a faster response?</p>
             <p style="margin:0 0 16px;font-size:13px;color:#6B5B45;">Chat directly with our team on WhatsApp — we're online now.</p>
-            <a href="https://wa.me/6285792132517?text=Halo%20Voyra%20Agency!%20%F0%9F%91%8B%0A%0ASaya%20menemukan%20website%20Voyra%20dan%20tertarik%20dengan%20layanan%20*digital%20marketing*%20untuk%20bisnis%20travel%20saya.%0A%0ABisa%20bantu%20saya%20memilih%20paket%20yang%20tepat%3F%20%F0%9F%99%8F" style="display:inline-block;background:#25D366;border:2px solid #25D366;color:#ffffff;font-weight:700;font-size:13px;padding:11px 28px;border-radius:50px;text-decoration:none;"><span style="color:#ffffff !important;-webkit-text-fill-color:#ffffff;mso-color-alt:#ffffff;">WhatsApp Us Now ↗</span></a>
+            <a href="${wa.href}" style="display:inline-block;background:#25D366;border:2px solid #25D366;color:#ffffff;font-weight:700;font-size:13px;padding:11px 28px;border-radius:50px;text-decoration:none;"><span style="color:#ffffff !important;-webkit-text-fill-color:#ffffff;mso-color-alt:#ffffff;">WhatsApp Us Now ↗</span></a>
           </div>
         </td>
       </tr>
@@ -218,8 +220,8 @@ function userConfirmationHtml(name: string, business: string, pkg: string) {
       <!-- Footer -->
       <tr>
         <td style="background:#F5F0E8;padding:16px 32px;text-align:center;border-top:1px solid #E8DFC8;margin-top:8px;">
-          <p style="margin:0 0 4px;font-size:12px;color:#C4A882;">voyra.id · support@balitravelnow.com · +62 857-9213-2517</p>
-          <p style="margin:0;font-size:11px;color:#D4C0A0;">You received this because you submitted a form on voyra.id</p>
+          <p style="margin:0 0 4px;font-size:12px;color:#C4A882;">${site.url.replace(/^https?:\/\//, "")} · ${site.email} · ${site.phone}</p>
+          <p style="margin:0;font-size:11px;color:#D4C0A0;">You received this because you submitted a form on ${site.url.replace(/^https?:\/\//, "")}</p>
         </td>
       </tr>
 
@@ -246,24 +248,7 @@ export const actions: Actions = {
       });
     }
 
-    let smtpHost: string | undefined;
-    let smtpPort: number;
-    let smtpUser: string | undefined;
-    let smtpPass: string | undefined;
-    let smtpFrom: string | undefined;
-
-    try {
-      const { env } = await import("$env/dynamic/private");
-      smtpHost = env.SMTP_HOST;
-      smtpPort = parseInt(env.SMTP_PORT ?? "587", 10);
-      smtpUser = env.SMTP_USER;
-      smtpPass = env.SMTP_PASS;
-      smtpFrom = env.SMTP_FROM;
-    } catch {
-      smtpPort = 587;
-    }
-
-    if (!smtpHost || !smtpUser || !smtpPass) {
+    if (!isSmtpConfigured()) {
       console.log("[Voyra Contact Form]", { name, business, contactInfo, pkg, message });
       return { success: true };
     }
@@ -272,22 +257,22 @@ export const actions: Actions = {
       const nodemailer = await import("nodemailer");
 
       const transporter = nodemailer.createTransport({
-        host: smtpHost,
-        port: smtpPort,
+        host: smtp.host,
+        port: smtp.port,
         secure: false,
         auth: {
-          user: smtpUser,
-          pass: smtpPass,
+          user: smtp.user,
+          pass: smtp.pass,
         },
       });
 
-      const senderAddress = `"Voyra Agency" <${smtpFrom ?? smtpUser}>`;
+      const senderAddress = `"${site.name}" <${smtp.from ?? smtp.user}>`;
       const userHasEmail = contactInfo.includes("@");
 
       const sends = [
         transporter.sendMail({
           from: senderAddress,
-          to: "me.jayakusuma@gmail.com",
+          to: adminEmail,
           replyTo: userHasEmail ? contactInfo : undefined,
           subject: `✦ New inquiry from ${name} — ${business}`,
           html: adminEmailHtml(name, business, contactInfo, pkg, message),
