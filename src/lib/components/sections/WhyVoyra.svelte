@@ -235,6 +235,10 @@
   }
   @media (max-width: 520px) {
     .grid { grid-template-columns: 1fr; }
+    .feature { padding: 1.1rem 1rem; }
+    .step-body { padding-bottom: 1.5rem; }
+    .step-title { font-size: 0.875rem; }
+    .step-desc { font-size: 0.78rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {

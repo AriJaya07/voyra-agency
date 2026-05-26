@@ -151,4 +151,10 @@
     .inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .pill { margin-left: 0 !important; }
   }
+
+  @media (max-width: 480px) {
+    .stats { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .stat-num { font-size: 1.65rem; }
+    .pill { font-size: 0.85rem; padding: 0.75rem 1.1rem; }
+  }
 </style>

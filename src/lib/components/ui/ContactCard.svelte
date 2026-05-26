@@ -56,7 +56,7 @@
   .wa { background: #DCF8C6; }
   .em { background: #DBEAFE; }
 
-  .info { flex: 1; }
+  .info { flex: 1; min-width: 0; }
   .label {
     font-size: 0.68rem;
     color: var(--text-muted);
@@ -69,6 +69,9 @@
     font-size: 0.925rem;
     font-weight: 600;
     color: var(--text-body);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .arrow {
@@ -79,5 +82,11 @@
   }
   .card:hover .arrow {
     transform: translateX(4px);
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 0.9rem 1rem; gap: 0.75rem; }
+    .icon { width: 40px; height: 40px; font-size: 1.1rem; }
+    .value { font-size: 0.82rem; }
   }
 </style>

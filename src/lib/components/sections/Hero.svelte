@@ -443,36 +443,41 @@
   }
 
   @media (max-width: 768px) {
-    .hero { padding-top: 5rem; padding-bottom: 3rem; min-height: auto; }
+    .hero { padding: 5rem 5% 4rem; min-height: auto; }
     .inner {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 2.5rem;
     }
     .content { max-width: none; }
     h1 { letter-spacing: -1px; }
     .scroll-hint { display: none; }
 
     /* Equal-width mirror buttons */
-    .actions {
-      flex-direction: column;
-    }
+    .actions { flex-direction: column; }
     .actions :global(.btn) {
       width: 100%;
       justify-content: center;
       padding: 1rem 1.5rem;
     }
 
-    /* Mockup on mobile: simpler */
+    /* Mockup on mobile */
+    .mockup-wrap { padding-top: 1.5rem; padding-bottom: 2.5rem; }
     .browser { transform: none; }
-    .browser-body { height: 240px; }
-    .float-badge-1 { left: 0; bottom: -1.25rem; }
-    .float-badge-2 { right: 0; top: 0.5rem; }
-    .bg-circle-1 { width: 300px; height: 300px; }
-    .bg-circle-2 { width: 200px; height: 200px; }
+    .browser-body { height: 220px; }
+
+    /* No negative offsets — prevent clipping */
+    .float-badge-1 { left: 0.5rem; bottom: 0; }
+    .float-badge-2 { display: none; }
+
+    .bg-circle-1 { width: 280px; height: 280px; }
+    .bg-circle-2 { width: 180px; height: 180px; }
   }
 
   @media (max-width: 480px) {
-    .float-badge-2 { display: none; }
+    .hero { padding: 5rem 4% 3rem; }
+    .float-badge-1 { display: none; }
+    .trust-badges { gap: 0.5rem; }
+    .badge { font-size: 0.7rem; padding: 0.35rem 0.7rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {

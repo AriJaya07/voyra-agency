@@ -62,6 +62,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    width: 100%;
     height: 100%;
   }
   .card::after {
@@ -182,8 +183,8 @@
     display: flex;
     flex-direction: column;
     gap: 0.65rem;
+    margin-bottom: 0;
     flex: 1;
-    margin-bottom: 1.6rem;
   }
   .features li {
     display: flex;
@@ -215,7 +216,7 @@
     color: var(--cream);
     transition: background var(--transition), border-color var(--transition),
       color var(--transition), transform var(--transition);
-    margin-top: auto;
+    margin-top: 1.6rem;
     letter-spacing: 0.2px;
     font-family: "Poppins", system-ui, sans-serif;
   }
@@ -233,5 +234,12 @@
     background: var(--teal-dark);
     border-color: var(--teal-dark);
     transform: translateY(-1px);
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 1.4rem 1.1rem; }
+    .name { font-size: 1.4rem; }
+    .price-block { padding: 0.85rem 0.9rem; }
+    .price-amount { font-size: clamp(1rem, 5vw, 1.4rem); }
   }
 </style>

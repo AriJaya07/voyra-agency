@@ -71,15 +71,14 @@
     flex-shrink: 0;
   }
 
-  /* Grid: equal height cards */
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    align-items: stretch; /* all cells same height */
+    align-items: stretch;
   }
   .grid-item {
-    display: flex; /* make PackageCard fill full height */
+    display: flex;
   }
 
   .guarantee {
@@ -99,8 +98,14 @@
   }
 
   @media (max-width: 680px) {
-    .grid { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; }
+    .grid { grid-template-columns: 1fr; }
     .header { flex-direction: column; align-items: flex-start; }
     .subtitle { max-width: none; }
+  }
+
+  @media (max-width: 480px) {
+    .title { font-size: clamp(1.75rem, 7vw, 2.5rem); }
+    .subtitle { font-size: 0.88rem; }
+    .guarantee { font-size: 0.8rem; }
   }
 </style>

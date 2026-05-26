@@ -310,4 +310,14 @@
     .inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .row { grid-template-columns: 1fr; }
   }
+
+  @media (max-width: 480px) {
+    .title { font-size: clamp(1.75rem, 7vw, 2.5rem); }
+    .desc { font-size: 0.875rem; }
+    .cards { gap: 0.65rem; }
+    .form-card { padding: 1.5rem 1.1rem; }
+    input, select, textarea { padding: 0.75rem 0.875rem; font-size: 0.85rem; }
+    .success { padding: 2.5rem 1.25rem; }
+    .response-time { font-size: 0.75rem; }
+  }
 </style>
