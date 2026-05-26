@@ -70,7 +70,7 @@ function adminEmailHtml(
 
           <!-- CTA -->
           <div style="text-align:center;margin:8px 0 24px;">
-            <a href="https://wa.me/6285792132517" style="display:inline-block;background:#25D366;border:2px solid #25D366;color:#ffffff;font-weight:700;font-size:14px;padding:13px 32px;border-radius:50px;text-decoration:none;letter-spacing:0.3px;mso-padding-alt:0;"><span style="color:#ffffff !important;-webkit-text-fill-color:#ffffff;mso-color-alt:#ffffff;">Reply via WhatsApp ↗</span></a>
+            <a href="https://wa.me/6285792132517?text=Halo%20Voyra%20Agency!%20%F0%9F%91%8B%0A%0ASaya%20menemukan%20website%20Voyra%20dan%20tertarik%20dengan%20layanan%20*digital%20marketing*%20untuk%20bisnis%20travel%20saya.%0A%0ABisa%20bantu%20saya%20memilih%20paket%20yang%20tepat%3F%20%F0%9F%99%8F" style="display:inline-block;background:#25D366;border:2px solid #25D366;color:#ffffff;font-weight:700;font-size:14px;padding:13px 32px;border-radius:50px;text-decoration:none;letter-spacing:0.3px;mso-padding-alt:0;"><span style="color:#ffffff !important;-webkit-text-fill-color:#ffffff;mso-color-alt:#ffffff;">Reply via WhatsApp ↗</span></a>
           </div>
 
         </td>
@@ -178,7 +178,7 @@ function userConfirmationHtml(name: string, business: string, pkg: string) {
           <div style="background:#F5F0E8;border-radius:12px;padding:20px 24px;text-align:center;">
             <p style="margin:0 0 6px;font-size:14px;font-weight:600;color:#1A1208;">Need a faster response?</p>
             <p style="margin:0 0 16px;font-size:13px;color:#6B5B45;">Chat directly with our team on WhatsApp — we're online now.</p>
-            <a href="https://wa.me/6285792132517" style="display:inline-block;background:#25D366;border:2px solid #25D366;color:#ffffff;font-weight:700;font-size:13px;padding:11px 28px;border-radius:50px;text-decoration:none;"><span style="color:#ffffff !important;-webkit-text-fill-color:#ffffff;mso-color-alt:#ffffff;">WhatsApp Us Now ↗</span></a>
+            <a href="https://wa.me/6285792132517?text=Halo%20Voyra%20Agency!%20%F0%9F%91%8B%0A%0ASaya%20menemukan%20website%20Voyra%20dan%20tertarik%20dengan%20layanan%20*digital%20marketing*%20untuk%20bisnis%20travel%20saya.%0A%0ABisa%20bantu%20saya%20memilih%20paket%20yang%20tepat%3F%20%F0%9F%99%8F" style="display:inline-block;background:#25D366;border:2px solid #25D366;color:#ffffff;font-weight:700;font-size:13px;padding:11px 28px;border-radius:50px;text-decoration:none;"><span style="color:#ffffff !important;-webkit-text-fill-color:#ffffff;mso-color-alt:#ffffff;">WhatsApp Us Now ↗</span></a>
           </div>
         </td>
       </tr>
